@@ -13,6 +13,12 @@ gulp.task("browserSync", function() {
   });
 });
 
+gulp.task("fonts", function() {
+  return gulp
+    .src(["./src/fonts/**/*", "!./src/fonts/.gitkeep"])
+    .pipe(gulp.dest("./dist/fonts/"));
+});
+
 gulp.task("js", function() {
   return gulp
     .src("./src/js/scripts.js")
@@ -57,7 +63,7 @@ gulp.task("sass", function() {
     );
 });
 
-gulp.task("default", gulp.series(["js", "pug", "sass"]));
+gulp.task("default", gulp.series(["fonts", "js", "pug", "sass"]));
 
 gulp.task(
   "watch",
