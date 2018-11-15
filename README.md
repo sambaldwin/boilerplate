@@ -1,13 +1,11 @@
-# Demo starter kit (Sass version)
-
-Original: https://github.com/sambaldwin/demo-starter-kit.git
+# Boilerplate
 
 Usage:
 
 1. Clone into a new, named, directory:
 
 ```shell
-git clone https://github.com/sambaldwin/demo-starter-kit-sass.git demo-name
+git clone https://github.com/sambaldwin/boilerplate.git project-name
 ```
 
 2. `cd` into new directory and delete `.git/`:
