@@ -5,11 +5,15 @@ Original: https://github.com/sambaldwin/demo-starter-kit.git
 Usage:
 
 1. Clone into a new, named, directory:
-``` shell
+
+```shell
 git clone https://github.com/sambaldwin/demo-starter-kit-sass.git demo-name
 ```
+
 2. `cd` into new directory and delete `.git/`:
-``` shell
+
+```shell
 rm -rf .git
 ```
+
 3. `npm i`

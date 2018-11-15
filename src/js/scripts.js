@@ -1,1 +1,1 @@
-console.log('Scripts loaded!');
+console.log("Scripts loaded!");
