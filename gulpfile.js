@@ -7,19 +7,10 @@ var pug = require("gulp-pug");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 
-gulp.task("sass", function() {
-  return gulp
-    .src(["./src/css/**/main.scss"])
-    .pipe(sass())
-    .pipe(autoprefixer())
-    .pipe(concat("main.css"))
-    .pipe(cssmin())
-    .pipe(gulp.dest("./dist/"))
-    .pipe(
-      browserSync.reload({
-        stream: true
-      })
-    );
+gulp.task("browserSync", function() {
+  browserSync.init({
+    server: "./dist/"
+  });
 });
 
 gulp.task("js", function() {
@@ -51,19 +42,28 @@ gulp.task("pug", function() {
     );
 });
 
-gulp.task("browserSync", function() {
-  browserSync.init({
-    server: "./dist/"
-  });
+gulp.task("sass", function() {
+  return gulp
+    .src(["./src/css/**/main.scss"])
+    .pipe(sass())
+    .pipe(autoprefixer())
+    .pipe(concat("main.css"))
+    .pipe(cssmin())
+    .pipe(gulp.dest("./dist/"))
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
 });
 
-gulp.task("default", gulp.series(["pug", "sass", "js"]));
+gulp.task("default", gulp.series(["js", "pug", "sass"]));
 
 gulp.task(
   "watch",
   gulp.parallel(["default", "browserSync"], function() {
-    gulp.watch("./src/css/**/*.scss", gulp.parallel("sass"));
     gulp.watch("./src/js/**/*.js", gulp.parallel("js"));
     gulp.watch("./src/pug/**/*.pug", gulp.parallel("pug"));
+    gulp.watch("./src/css/**/*.scss", gulp.parallel("sass"));
   })
 );
