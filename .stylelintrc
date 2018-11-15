@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    "stylelint-order"
+  ],
+  "extends": "stylelint-config-recommended",
+  "rules": {
+    "order/properties-alphabetical-order": true
+  },
+}
