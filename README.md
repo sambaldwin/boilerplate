@@ -1,5 +1,7 @@
 # Boilerplate
 
+[gulp](http://gulpjs.com) + [Pug](https://pugjs.org) + [Sass](https://sass-lang.com) boilerplate for new projects or demos.
+
 Usage:
 
 1. Clone into a new, named, directory:
