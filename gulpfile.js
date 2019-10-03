@@ -1,7 +1,7 @@
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync").create();
 var concat = require("gulp-concat");
-var cssmin = require("gulp-cssmin");
+let cleanCSS = require('gulp-clean-css');
 var gulp = require("gulp");
 var pug = require("gulp-pug");
 var sass = require("gulp-sass");
@@ -54,7 +54,7 @@ gulp.task("sass", function() {
     .pipe(sass())
     .pipe(autoprefixer())
     .pipe(concat("main.css"))
-    .pipe(cssmin())
+    .pipe(cleanCSS())
     .pipe(gulp.dest("./dist/"))
     .pipe(
       browserSync.reload({
