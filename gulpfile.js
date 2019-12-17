@@ -1,9 +1,9 @@
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync").create();
 var concat = require("gulp-concat");
-let cleanCSS = require('gulp-clean-css');
+let cleanCSS = require("gulp-clean-css");
 var gulp = require("gulp");
-var pug = require("gulp-pug");
+var nunjucks = require("gulp-nunjucks");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 
@@ -32,14 +32,14 @@ gulp.task("js", function() {
     );
 });
 
-gulp.task("pug", function() {
+gulp.task("nunjucks", function() {
   return gulp
     .src([
-      "./src/pug/**/*.pug",
-      "!./src/pug/**/_*.pug",
-      "!./src/pug/**/_*/**/*.pug"
+      "./src/html/**/*.html",
+      "!./src/html/**/_*.html",
+      "!./src/html/**/_*/**/*.html"
     ])
-    .pipe(pug())
+    .pipe(nunjucks.compile())
     .pipe(gulp.dest("./dist/"))
     .pipe(
       browserSync.reload({
@@ -63,13 +63,13 @@ gulp.task("sass", function() {
     );
 });
 
-gulp.task("default", gulp.series(["fonts", "js", "pug", "sass"]));
+gulp.task("default", gulp.series(["fonts", "js", "nunjucks", "sass"]));
 
 gulp.task(
   "watch",
   gulp.parallel(["default", "browserSync"], function() {
     gulp.watch("./src/js/**/*.js", gulp.parallel("js"));
-    gulp.watch("./src/pug/**/*.pug", gulp.parallel("pug"));
+    gulp.watch("./src/html/**/*.html", gulp.parallel("nunjucks"));
     gulp.watch("./src/css/**/*.scss", gulp.parallel("sass"));
   })
 );
