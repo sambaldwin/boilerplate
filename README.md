@@ -1,6 +1,6 @@
 # Boilerplate
 
-[gulp](http://gulpjs.com) + [Pug](https://pugjs.org) + [Sass](https://sass-lang.com) boilerplate for new projects and demos.
+[gulp](http://gulpjs.com) + [Nunjucks](https://mozilla.github.io/nunjucks/) + [Sass](https://sass-lang.com) boilerplate for new projects and demos.
 
 Usage:
 
