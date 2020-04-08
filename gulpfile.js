@@ -3,7 +3,7 @@ var browserSync = require("browser-sync").create();
 var concat = require("gulp-concat");
 let cleanCSS = require("gulp-clean-css");
 var gulp = require("gulp");
-var nunjucks = require("gulp-nunjucks");
+var nunjucksRender = require("gulp-nunjucks-render");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 
@@ -32,14 +32,19 @@ gulp.task("js", function() {
     );
 });
 
-gulp.task("nunjucks", function() {
+gulp.task("nunjucks", function () {
   return gulp
     .src([
-      "./src/html/**/*.html",
-      "!./src/html/**/_*.html",
-      "!./src/html/**/_*/**/*.html"
+      "./src/njk/**/*.njk",
+      "!./src/njk/**/_*.njk",
+      "!./src/njk/**/_*/**/*.njk",
     ])
-    .pipe(nunjucks.compile())
+    .pipe(
+      nunjucksRender({
+        path: ["./src/njk/"],
+        ext: ".html",
+      })
+    )
     .pipe(gulp.dest("./dist/"))
     .pipe(
       browserSync.reload({
@@ -69,7 +74,7 @@ gulp.task(
   "watch",
   gulp.parallel(["default", "browserSync"], function() {
     gulp.watch("./src/js/**/*.js", gulp.parallel("js"));
-    gulp.watch("./src/html/**/*.html", gulp.parallel("nunjucks"));
+    gulp.watch("./src/njk/**/*.njk", gulp.parallel("nunjucks"));
     gulp.watch("./src/css/**/*.scss", gulp.parallel("sass"));
   })
 );
