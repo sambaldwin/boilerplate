@@ -7,19 +7,19 @@ var nunjucksRender = require("gulp-nunjucks-render");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 
-gulp.task("browserSync", function() {
+gulp.task("browserSync", function () {
   browserSync.init({
-    server: "./dist/"
+    server: "./dist/",
   });
 });
 
-gulp.task("fonts", function() {
+gulp.task("fonts", function () {
   return gulp
     .src(["./src/fonts/**/*", "!./src/fonts/.gitkeep"])
     .pipe(gulp.dest("./dist/fonts/"));
 });
 
-gulp.task("js", function() {
+gulp.task("js", function () {
   return gulp
     .src("./src/js/scripts.js")
     .pipe(concat("scripts.min.js"))
@@ -27,7 +27,7 @@ gulp.task("js", function() {
     .pipe(gulp.dest("./dist/"))
     .pipe(
       browserSync.reload({
-        stream: true
+        stream: true,
       })
     );
 });
@@ -48,12 +48,12 @@ gulp.task("nunjucks", function () {
     .pipe(gulp.dest("./dist/"))
     .pipe(
       browserSync.reload({
-        stream: true
+        stream: true,
       })
     );
 });
 
-gulp.task("sass", function() {
+gulp.task("sass", function () {
   return gulp
     .src(["./src/css/**/main.scss"])
     .pipe(sass())
@@ -63,7 +63,7 @@ gulp.task("sass", function() {
     .pipe(gulp.dest("./dist/"))
     .pipe(
       browserSync.reload({
-        stream: true
+        stream: true,
       })
     );
 });
@@ -72,7 +72,7 @@ gulp.task("default", gulp.series(["fonts", "js", "nunjucks", "sass"]));
 
 gulp.task(
   "watch",
-  gulp.parallel(["default", "browserSync"], function() {
+  gulp.parallel(["default", "browserSync"], function () {
     gulp.watch("./src/js/**/*.js", gulp.parallel("js"));
     gulp.watch("./src/njk/**/*.njk", gulp.parallel("nunjucks"));
     gulp.watch("./src/css/**/*.scss", gulp.parallel("sass"));
