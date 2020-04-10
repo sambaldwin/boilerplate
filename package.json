@@ -5,7 +5,7 @@
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^5.0.0",
-    "gulp-clean-css": "^4.2.0",
+    "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-nunjucks-render": "^2.2.3",
     "gulp-sass": "^3.2.1",
@@ -15,6 +15,6 @@
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-recommended-scss": "^3.3.0",
     "stylelint-order": "^1.0.0",
-    "stylelint-scss": "^3.6.1"
+    "stylelint-scss": "^3.16.1"
   }
 }
